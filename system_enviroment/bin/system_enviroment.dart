@@ -1,6 +1,6 @@
 import 'dart:io';
 void main(List<String> arguments) {
-print('OS: ${Platform.operatingSystem} ${Platform.version}');
+/*print('OS: ${Platform.operatingSystem} ${Platform.version}');
 
 if(Platform.isLinux)
   print('running in linux');
@@ -16,5 +16,8 @@ if(Platform.isLinux)
   print('\n enviroment system');
   Platform.environment.keys.forEach((element) {
     print('$element ${Platform.environment[element]}');
-  });
+  });*/
+
+Process.run('ls', ['-l']).then((value) => print(value.stdout + '\nexit code: ${value.exitCode}'));
+
 }
