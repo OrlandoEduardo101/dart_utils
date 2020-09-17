@@ -9,12 +9,6 @@ void main(List<String> arguments) {
 
   menu();
 
- /* Directory dir = Directory.current;
-  print(dir.path);
-  
-  File file = File(dir.path +'/my_file.txt');
-
-  readFile(file);*/
 }
 
 void menu(){
@@ -22,11 +16,13 @@ void menu(){
   print('\nSelect a option:');
   print('\n1 - Show today cotation');
   print('\n2 - Register today cotation');
+  print('\n3 - show registers  cotation');
 
   String option = stdin.readLineSync();
   switch(int.parse(option)){
     case 1: today(); break;
     case 2: registerData(); break;
+    case 3: listData(); break;
     default: print('invalid option, try again.'); menu(); break;
   }
 }
@@ -58,6 +54,16 @@ void registerData() async {
   }
   else
     print('\n\n################### Register alredy exists ###############################');
+}
+
+void listData(){
+  dynamic fileData = readFile();
+  fileData = (fileData != null && fileData != '' ? json.decode(fileData) : List());
+
+  print('\n\n##################### List datas ########################');
+  fileData.forEach((data){
+    print('${data['date']} ---> ${data['data']}');
+  });
 }
 
 String readFile(){
@@ -104,17 +110,3 @@ String now(){
   return '${now.day.toString().padLeft(2, '0')}/${now.month.toString().padLeft(2, '0')}/${now.year.toString().padLeft(2, '0')}';
 }
 
-
-/*
-void readFile(File file){
-  if(!file.existsSync()){
-    print('not founded');
-    return;
-  }
-  print("Initing read...");
-  print(file.readAsStringSync());
-
-  print("Reading bytes...");
-  List values = file.readAsBytesSync();
-  values.forEach((element) => print(element));
-}*/
