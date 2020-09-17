@@ -7,11 +7,31 @@ int counter = 0;
 
 void main(List<String> arguments) async {
 
-  print('Start');
+  var eventList = List<dynamic>();
+  var controller = StreamController<dynamic>();
+  var stream = controller.stream;
+  stream.listen((event) {
+    print(' Start Event: $event');
+    eventList.add(event);
+  }, onDone: (){
+    print('Closed stream');
+    print(eventList);
+  });
+
+  controller.sink.add('Fala');
+  controller.sink.add('ZEZE');
+  controller.sink.add('Bom');
+  controller.sink.add('Dia');
+  controller.sink.add('cara');
+  controller.close();
+
+  print('Opened Channel....');
+
+  /*print('Start');
   appendFile();
 
   print(await readFile());
-  print('######### End #########');
+  print('######### End #########');*/
 
 
 
@@ -38,7 +58,7 @@ void main(List<String> arguments) async {
   print('init: ${getTime()}');*/
 }
 
-void appendFile(){
+/*void appendFile(){
   File file = File(Directory.current.path+'/test.txt');
   DateTime dt = DateTime.now();
   file.writeAsString(dt.toString() + '\r\n', mode: FileMode.append);
@@ -47,7 +67,7 @@ void appendFile(){
 Future<String> readFile(){
   File file = File(Directory.current.path+'/test.txt');
   return file.readAsString();
-}
+}*/
 
 /*void timeout(Timer timer){
   print('wait: ${getTime()}');
