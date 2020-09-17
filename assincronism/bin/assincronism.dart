@@ -7,7 +7,9 @@ int counter = 0;
 
 void main(List<String> arguments) async {
 
-  var eventList = List<dynamic>();
+  generator();
+
+  /*var eventList = List<dynamic>();
   var controller = StreamController<dynamic>();
   var stream = controller.stream;
   stream.listen((event) {
@@ -25,7 +27,7 @@ void main(List<String> arguments) async {
   controller.sink.add('cara');
   controller.close();
 
-  print('Opened Channel....');
+  print('Opened Channel....');*/
 
   /*print('Start');
   appendFile();
@@ -56,6 +58,26 @@ void main(List<String> arguments) async {
   Timer.periodic(duration, timeout);
 
   print('init: ${getTime()}');*/
+}
+
+generator () {
+  Iterable<int> syncGenerator (int loop) sync* {
+    int value = 0;
+    while(value < loop){
+      yield ++value;
+    }
+  }
+  print(syncGenerator(10));
+
+  Stream<int> asyncGenerate(int loop) async* {
+    int value = 0;
+    while(value < loop){
+      yield ++value;
+    }
+  }
+  asyncGenerate(10).forEach((element) {
+    print(element);
+  });
 }
 
 /*void appendFile(){
