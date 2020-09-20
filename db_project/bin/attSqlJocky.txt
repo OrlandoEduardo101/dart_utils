@@ -1,0 +1,44 @@
+A biblioteca sqljocky5 sofreu atualização desde quando as aulas seguintes foram gravadas.
+As aulas foram feitas na versão 2.2.0 e atualmente temos a versão 2.2.1.
+Algumas poucas coisas mudaram, mas, influenciam diretamente no sucesso das aulas.
+Deixarei nas aulas que sofreram alterações o projeto completo que utilizei com as correções.
+
+Basicamente na aula de inserção de dados, o que mudou foi a exigência de mais um import
+para podermos utilizar a chamada do MySqlConnection. Então, no arquivo main.dart além
+dos imports ensinados nas aulas, adicione o:
+
+  import 'package:sqljocky5/connection/connection.dart';
+
+
+
+No método  "inserData()" em vez de prepareMulti, precisaremos alterar para preparedWithAll.
+Assim, a linha com a query de inserção ficará assim:
+
+await conn.preparedWithAll("INSERT INTO people (name, email, age) VALUES (?, ?, ?)", data);
+
+
+
+E por último mas não menos importante, notei que após a atualização,
+dar o comando para encerrar a conexão do banco de dados gerou erro nos meus testes.
+Caso no seu também gere o erro "Unhandled exception:   Bad state: Cannot write to socket,
+it is closed" comente a linha "await conn.close();" dentro do método main().
+
+Após a atualização da biblioteca sqljocky5 para a versão 2.2.1,
+algumas coisas mudaram para o bom funcionamento da aula de listagem de dados.
+Agora precisamos importar no arquivo main.dart a biblioteca responsável pelos results.
+Então, insira no topo do seu arquivo main junto com os demais imports o results:
+
+import 'package:sqljocky5/results/results.dart';
+
+
+
+O método execute teve o seu tipo de retorno alterado. Anteriormente ele retornava um tipo Results,
+agora ele retorna um tipo StreamedResults. Na prática, só o que muda é a chamada do tipo.
+Seu método de listagem de dados deverá ficar assim:
+
+Future<void> listData(MySqlConnection conn) async {
+  print('Listando dados');
+
+  StreamedResults results = await conn.execute('SELECT * FROM people');
+  results.forEach((Row row) => print('ID: ${row[0]}, Nome: ${row[1]}, Idade: ${row[2]}, Email: ${row[3]},'));
+}

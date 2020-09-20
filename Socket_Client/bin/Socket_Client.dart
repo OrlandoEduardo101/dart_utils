@@ -7,7 +7,7 @@ void main(List<String> arguments)  {
   int port = 3000;
   List<int> dataToSend = utf8.encode(data);
 
-  RawDatagramSocket.bind(InternetAddress.loopbackIPv4, 3000).then((value) {
+  RawDatagramSocket.bind(InternetAddress.loopbackIPv4, 3000).then((RawDatagramSocket value) {
 
     value.send(dataToSend, InternetAddress.loopbackIPv4, port);
 
