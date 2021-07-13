@@ -1,7 +1,7 @@
 import 'dart:io';
 
 List<int> getList() {
-  var controller = true;
+  var controller = true; //flag para parar o loop
   var list = <int>[];
   print(' ########### insira um valor ###########');
 
@@ -20,22 +20,27 @@ List<int> getList() {
   return list;
 }
 
+
+//metodo de busca binária
 int binarySearch(List<int> list, dynamic item, int length) {
   
-  int inf = 0;
-  int sup = (length - 1);
-  int half;
-  while (inf <= sup) {
-    half = (inf + sup) ~/ 2;
-    if (item == list[half]) {
-      return half;
-    }
-    if (item < list[half]) {
-      sup = half - 1;
-    } else {
-      inf = half + 1;
-    }
+  int bottom_list = 0;
+  int higher_list = (length - 1);
+  int half_list;
+
+  //loop para ir dividindo a lista até encontrar o valor
+  while (bottom_list <= higher_list) {
+    half_list = (bottom_list + higher_list) ~/ 2;
+    if (item == list[half_list]) 
+      return half_list; //retorna o indice do valor encontrado
+    
+    if (item < list[half_list]) 
+      higher_list = half_list - 1;
+
+    else 
+      bottom_list = half_list + 1;
+    
   }
-  
+  //retorna -1 se não encontrou o valor
   return -1;
 }

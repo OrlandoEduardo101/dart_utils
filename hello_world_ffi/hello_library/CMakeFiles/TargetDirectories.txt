@@ -1,0 +1,4 @@
+/home/orlando-eduardo101/IdeaProjects/dart_utils/hello_world_ffi/hello_library/CMakeFiles/rebuild_cache.dir
+/home/orlando-eduardo101/IdeaProjects/dart_utils/hello_world_ffi/hello_library/CMakeFiles/edit_cache.dir
+/home/orlando-eduardo101/IdeaProjects/dart_utils/hello_world_ffi/hello_library/CMakeFiles/hello_test.dir
+/home/orlando-eduardo101/IdeaProjects/dart_utils/hello_world_ffi/hello_library/CMakeFiles/hello_library.dir

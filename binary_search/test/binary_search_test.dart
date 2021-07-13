@@ -6,9 +6,9 @@ import 'package:test/test.dart';
 
 void main() {
 
-  test('add list', () {
+  /*test('add list', () {
     expect(getList(), ['1','2','3']);
-      });
+      });*/
   test('binary search', () {
     expect(binarySearch([1,2,3], 3, 3), 2);
       });
