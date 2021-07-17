@@ -1,0 +1,1 @@
+/usr/bin/cc -fPIC -shared -Wl,-soname,libprimitives.so.1 -o libprimitives.so.1.0.0 CMakeFiles/primitives_library.dir/primitives.c.o 

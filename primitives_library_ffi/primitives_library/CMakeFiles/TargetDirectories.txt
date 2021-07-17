@@ -1,0 +1,4 @@
+/home/orlando-eduardo101/IdeaProjects/dart_utils/primitives_library_ffi/primitives_library/CMakeFiles/rebuild_cache.dir
+/home/orlando-eduardo101/IdeaProjects/dart_utils/primitives_library_ffi/primitives_library/CMakeFiles/edit_cache.dir
+/home/orlando-eduardo101/IdeaProjects/dart_utils/primitives_library_ffi/primitives_library/CMakeFiles/primitives_test.dir
+/home/orlando-eduardo101/IdeaProjects/dart_utils/primitives_library_ffi/primitives_library/CMakeFiles/primitives_library.dir

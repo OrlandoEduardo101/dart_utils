@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/primitives_test.dir/primitives.c.o -o primitives_test 
